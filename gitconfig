@@ -1,0 +1,14 @@
+[user]
+	name = Petter Eek
+	email = petter@pettereek.se
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	diffs = diff --cached
+[push]
+	default = simple
+[core]
+  editor = vim
+[url "git@github.com:"]
+	insteadOf = https://github.com/
