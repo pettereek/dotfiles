@@ -28,6 +28,7 @@ Plugin 'evidens/vim-twig'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'rking/ag.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'keith/swift.vim'
 
 " Git
 Plugin 'tpope/vim-fugitive'
@@ -98,6 +99,7 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_go_checkers = ['go', 'govet', 'errcheck']
+let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 
 "
 " Jsx
