@@ -47,6 +47,12 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 "
+" Keyboard
+" --------
+"
+let mapleader="," " comma is leader
+
+"
 " Editor
 " ------
 "
@@ -118,10 +124,9 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
 "
-" Keyboard
-" --------
+" Typos
+" -----
 "
-let mapleader="," " comma is leader
 command! W write " Use W (capital w) for writing
 
 " <esc> shortcuts
