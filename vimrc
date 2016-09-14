@@ -83,8 +83,8 @@ set splitright
 " File type handling
 " ------------------
 "
-au BufNewFile,BufRead *.hbs set filetype=html
-au BufNewFile,BufRead *.scss set filetype=css
+autocmd BufNewFile,BufRead *.hbs set filetype=html
+autocmd BufNewFile,BufRead *.scss set filetype=css
 
 "
 " Colors
