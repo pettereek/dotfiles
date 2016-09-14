@@ -56,17 +56,18 @@ let mapleader="," " comma is leader
 " Editor
 " ------
 "
-syntax on                      " Enable syntax highlighting
-set encoding=utf-8             " Use UTF-8
-set number                     " Enable line numbers
-set ruler                      " Show the cursor position
-set hidden                     " Keep buffer in memory, and allow leaving them without saving
-set directory=~/.vim/swapfiles " Swap file directory
+syntax on                             " Enable syntax highlighting
+set encoding=utf-8                    " Use UTF-8
+set number                            " Enable line numbers
+set ruler                             " Show the cursor position
+set hidden                            " Better handling of multiple buffers
+set directory=~/.vim/swapfiles        " Swap file directory
+set listchars=tab:~\.,space:\.,eol:↩︎  " Whitespace highlighting
 
 " Tab
 set tabstop=2    " Tab is 2 columns
-set expandtab    " Expand tab to spaces
 set shiftwidth=2 " << | >> shifts 2 columns
+set expandtab    " Expand tab to spaces
 
 " Buffer search
 set hlsearch   " Highlight seach results
