@@ -151,8 +151,7 @@ if executable('ag')
 	let g:ag_prg = 'ag --nogroup --column --smart-case --skip-vcs-ignores --ignore-dir node_modules'
  
   " Use Ag do the searching for CtrlP
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --skip-vcs-ignores
-        \ --ignore-dir node_modules --ignore-dir Godeps'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --skip-vcs-ignores --ignore-dir node_modules --ignore-dir Godeps'
 	let g:ctrlp_use_caching = 0
 endif
 
