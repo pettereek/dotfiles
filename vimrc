@@ -87,12 +87,6 @@ autocmd BufNewFile,BufRead *.hbs set filetype=html
 autocmd BufNewFile,BufRead *.scss set filetype=css
 
 "
-" Colors
-" ------
-"
-colorscheme smyck
-
-"
 " NerdTREE
 " --------
 "
