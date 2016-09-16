@@ -90,8 +90,12 @@ autocmd BufNewFile,BufRead *.scss set filetype=css
 " NerdTREE
 " --------
 "
-map <C-n> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFind<CR>
+let NERDTreeSortHiddenFirst=1
+let NERDTreeShowHidden=1
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '~'
+map <leader>fs :NERDTreeToggle<CR>
+map <leader>ff :NERDTreeFind<CR>
 
 "
 " Syntastic
