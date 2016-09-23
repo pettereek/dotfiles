@@ -3,10 +3,11 @@
 " -----
 "
 set macligatures
-set guifont=M+\ 2m:h13
+set guifont=SF\ Mono:h12
 
 "
 " Colors
 " ------
 "
-colorscheme seti
+set background=dark
+colorscheme solarized
