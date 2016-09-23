@@ -37,6 +37,7 @@ Plugin 'airblade/vim-gitgutter'
 " Javascript, React, jsx
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'flowtype/vim-flow'
 
 " Colors
 Plugin 'flazz/vim-colorschemes'
