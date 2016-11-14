@@ -23,18 +23,20 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'rking/ag.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" Language support
+Plugin 'keith/swift.vim'
 Plugin 'fatih/vim-go'
 Plugin 'evidens/vim-twig'
 Plugin 'digitaltoad/vim-jade'
-Plugin 'rking/ag.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'keith/swift.vim'
 
 " Git
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-" Javascript, React, jsx
+" Javascript
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'flowtype/vim-flow'
