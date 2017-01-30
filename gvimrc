@@ -3,7 +3,7 @@
 " -----
 "
 set macligatures
-set guifont=Go\ Mono:h12
+set guifont=Menlo:h12
 
 "
 " Colors
