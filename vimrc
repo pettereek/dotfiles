@@ -31,6 +31,7 @@ Plugin 'keith/swift.vim'
 Plugin 'fatih/vim-go'
 Plugin 'evidens/vim-twig'
 Plugin 'digitaltoad/vim-jade'
+Plugin 'elixir-lang/vim-elixir'
 
 " Git
 Plugin 'tpope/vim-fugitive'
@@ -154,8 +155,14 @@ if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor\ --skip-vcs-ignores
 	let g:ag_prg = 'ag --nogroup --column --smart-case --skip-vcs-ignores --ignore-dir node_modules'
  
-  " Use Ag do the searching for CtrlP
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --skip-vcs-ignores --ignore-dir node_modules --ignore-dir Godeps'
+  " Use Ag search for CtrlP
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""
+        \ --ignore-dir node_modules
+        \ --ignore-dir Godeps
+        \ --ignore-dir deps
+        \ --ignore-dir _deploy
+        \ --ignore-dir _build
+        \ --skip-vcs-ignores'
 	let g:ctrlp_use_caching = 0
 endif
 
