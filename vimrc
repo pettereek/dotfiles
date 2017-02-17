@@ -2,7 +2,6 @@
 " .vimrc
 " ------
 "
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -44,6 +43,7 @@ Plugin 'flowtype/vim-flow'
 
 " Colors
 Plugin 'flazz/vim-colorschemes'
+Plugin 'herrbischoff/cobalt2.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

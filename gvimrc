@@ -9,5 +9,5 @@ set guifont=Menlo:h12
 " Colors
 " ------
 "
-set background=dark
-colorscheme solarized
+set background=light
+colorscheme cobalt2
