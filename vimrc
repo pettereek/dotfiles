@@ -136,6 +136,7 @@ command! W w
 command! Q q
 command! Wq wq
 command! WQ wq
+command! Vs vs
 
 " <esc> shortcuts
 inoremap jk <esc>
