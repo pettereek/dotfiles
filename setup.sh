@@ -109,4 +109,18 @@ else
   prettySkip "dotfiles"
 fi
 
+#
+# Vim plugins
+#
+printf "\nInstall Vim plugins? [yN] "
+read installVimPlugins
+
+if [ "$installVimPlugins" == "y" ]; then
+  prettyInstall "Vim plugins"
+  prettyDetail "vim +PluginInstall +qall"
+  vim +PluginInstall +qall
+else
+  prettySkip "Vim plugins"
+fi
+
 printf "\nDone!"
