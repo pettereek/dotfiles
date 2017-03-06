@@ -1,4 +1,5 @@
 -- Highlights the text in pasteboard
+
 local log = hs.logger.new('highlight','debug')
 
 local executeAppleScript = function(file)
@@ -12,25 +13,32 @@ local executeAppleScript = function(file)
   return result
 end
 
-local assertExecutable = function(name)
+-- Get the absolute path for an exetuable named `name`
+local absPathExecutable = function(name)
+  -- Use `hs.execute(str, __true__)` to load the users $PATH correctly
   local result, status = hs.execute('command -v ' .. name, true)
   local executable = hs.fnutils.split(result, '%s', 2)[1]
 
   if status == nil or executable == '' then
-    return '', false
+    return ''
   end
 
-  return executable, true
+  return executable
 end
 
+-- Prints an abort message with `reason`
 local abort = function(reason)
   log.w(reason .. ', aborting...')
 end
 
-hs.hotkey.bind(hyper, "H", function()
-  local executable, ok = assertExecutable('highlight')
-  if ok == false then
-    return abort('Executable "highlight" not found')
+hs.hotkey.bind(hyper, 'H', function()
+  local tmpFile = os.getenv('HOME')..'/.highlight.tmp'
+
+  local hl = 'highlight'
+  local executable = absPathExecutable(hl)
+  if executable == '' then
+    hs.notify.show('Highlighting failed 😔', '', 'Try "brew install highlight"')
+    return abort('Executable "' .. hl .. '" not found')
   end
 
   local pb = hs.pasteboard.readString()
@@ -39,7 +47,7 @@ hs.hotkey.bind(hyper, "H", function()
   end
 
   -- Write contents to tmp file, much easier for highlight to handle
-  file = assert(io.open(os.getenv("HOME")..'/.highlight.tmp', 'w'))
+  file = assert(io.open(tmpFile, 'w'))
   file:write(pb)
 
   local syntax = executeAppleScript('syntax.AppleScript')
@@ -54,7 +62,7 @@ hs.hotkey.bind(hyper, "H", function()
 
   log.i('syntax "' .. syntax .. '", style "', style .. '"')
 
-  local cmd = executable .. ' -i ~/.highlight.tmp -O rtf --line-numbers --replace-tabs=2 --font-size=32 --font=Monaco --no-trailing-nl --syntax=' .. syntax .. ' --style=' .. style
+  local cmd = executable ..' -i '.. tmpFile ..' -O rtf --line-numbers --replace-tabs=2 --font-size=32 --font=Monaco --no-trailing-nl --syntax='.. syntax ..' --style='.. style
   local highlighted, _status, _type, _rc = hs.execute(cmd)
 
   local styledText = hs.styledtext.getStyledTextFromData(highlighted, 'rtf')
