@@ -86,6 +86,13 @@ set splitbelow
 set splitright
 
 "
+" Colors
+" ------
+"
+set background=dark
+colorscheme gruvbox
+
+"
 " File type handling
 " ------------------
 "
