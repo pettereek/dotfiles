@@ -68,7 +68,7 @@ set ruler                             " Show the cursor position
 set hidden                            " Better handling of multiple buffers
 set directory=~/.vim/swapfiles        " Swap file directory
 set list lcs=trail:·,tab:»·           " Whitespace highlighting
-set list!
+set list
 
 " Tab
 set tabstop=2    " Tab is 2 columns
