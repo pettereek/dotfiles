@@ -2,8 +2,8 @@
 " .vimrc
 " ------
 "
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible " be iMproved, required
+filetype off     " required
 
 "
 " Vundle
@@ -61,13 +61,13 @@ let mapleader="," " comma is leader
 " Editor
 " ------
 "
-syntax on                             " Enable syntax highlighting
-set encoding=utf-8                    " Use UTF-8
-set number                            " Enable line numbers
-set ruler                             " Show the cursor position
-set hidden                            " Better handling of multiple buffers
-set directory=~/.vim/swapfiles        " Swap file directory
-set list lcs=trail:·,tab:»·           " Whitespace highlighting
+syntax on                      " Enable syntax highlighting
+set encoding=utf-8             " Use UTF-8
+set number                     " Enable line numbers
+set ruler                      " Show the cursor position
+set hidden                     " Better handling of multiple buffers
+set directory=~/.vim/swapfiles " Swap file directory
+set list lcs=trail:·,tab:»·    " Whitespace highlighting
 set list
 
 " Tab
