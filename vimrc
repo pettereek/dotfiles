@@ -78,8 +78,8 @@ set expandtab    " Expand tab to spaces
 " Buffer search
 set hlsearch   " Highlight seach results
 set ignorecase " Ignore case of searches
-set incsearch  " Highlight dynamically as pattern is typed
 set smartcase  " Search with case if upper case is used
+set incsearch  " Highlight dynamically as pattern is typed
 
 " Split
 set splitbelow
