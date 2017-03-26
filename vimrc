@@ -101,7 +101,7 @@ colorscheme gruvbox
 " ------------------
 "
 autocmd BufNewFile,BufRead *.hbs set filetype=html
-autocmd BufNewFile,BufRead *.scss set filetype=css
+autocmd BufNewFile,BufRead *.scss set filetype=scss
 
 "
 " NerdTREE
