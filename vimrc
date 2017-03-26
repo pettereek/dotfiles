@@ -120,9 +120,11 @@ map <leader>ff :NERDTreeFind<CR>
 "
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['mixedindentlint', 'eslint']
 let g:syntastic_go_checkers = ['go', 'govet', 'errcheck']
 let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
+let g:syntastic_css_checkers = ['mixedindentlint']
+let g:syntastic_scss_checkers = ['mixedindentlint']
 
 "
 " Jsx
