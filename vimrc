@@ -89,6 +89,10 @@ set splitright
 " Colors
 " ------
 "
+if (has("termguicolors"))
+  set termguicolors " enable 'True color'
+endif
+
 set background=dark
 colorscheme gruvbox
 
