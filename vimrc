@@ -24,6 +24,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'rking/ag.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " Language support
 Plugin 'keith/swift.vim'
@@ -169,7 +171,7 @@ inoremap <C-tab>   <Esc>:tabnext<CR>i
 if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor\ --skip-vcs-ignores
 	let g:ag_prg = 'ag --nogroup --column --smart-case --skip-vcs-ignores --ignore-dir node_modules'
- 
+
   " Use Ag search for CtrlP
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""
         \ --ignore-dir node_modules
@@ -193,3 +195,20 @@ function! AgExt(...) "{{{
 	echo "normal :Ag -G '\.(".ext.")$' ".rest."<CR>"
 	exe "Ag -G '\.(".ext.")$' ".rest
 endfunction "}}}
+
+"
+" YouCompleteMe
+" -------------
+"
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+
+"
+" UltiSnips
+" ---------
+"
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<C-m>'
+let g:UltiSnipsJumpBackwardTrigger='<C-n>'
+let g:UltiSnipsSnippetsDir='~/.vim/customsnips'
+let g:UltiSnipsSnippetDirectories=['customsnips', 'UltiSnips']
