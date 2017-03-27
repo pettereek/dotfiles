@@ -1,0 +1,95 @@
+#
+# Capsule
+# -------
+#
+snippet cfetch "capsule Fetch component" b
+Components.Fetch('${1:ComponentName}', {
+  statics: {
+    query(${2:params}) {
+      return { ${3} }
+    }
+  },
+
+  render() {
+    return null
+  }
+})
+endsnippet
+
+snippet cdispact "capsule Utils bind dispatch actions" b
+dispatch => Utils.BindDispatchActions(dispatch, {
+  actions: ${1:Model}.actions
+})
+endsnippet
+
+#
+# React
+# -----
+#
+snippet gis "react getInitialState" b
+getInitialState() {
+  return {
+    $0
+  }
+},
+endsnippet
+
+snippet gdp "react getDefaultProps" b
+getDefaultProps() {
+  return {
+    $0
+  }
+},
+endsnippet
+
+snippet proptypes "react PropTypes" b
+propTypes: {
+  ${VISUAL}$0
+},
+endsnippet
+
+snippet proptype "react PropType" b
+${1:name}: React.PropTypes.$2${3:.isRequired}
+endsnippet
+
+snippet createclass "react createClass" b
+const ${1:ClassName} = React.createClass({
+  render() {
+    return <${2:div}>$0</$2>
+  }
+})
+endsnippet
+
+snippet component "react stateless component" b
+function ${1:ComponentName}(${2:props}) {
+  return <${3:div}>$0</$3>
+}
+endsnippet
+
+#
+# General
+# -------
+#
+snippet imp "import abc from 'abc'" b
+import $1 from '$2'
+endsnippet
+
+snippet cimp "import { abc } from '@syb/capsule'" b
+import { $1 } from '@syb/capsule'
+endsnippet
+
+snippet uimp "import { abc } from '@syb/ui'" b
+import { $1 } from '@syb/ui'
+endsnippet
+
+snippet reduce "reduce function" b
+${1:what}.reduce((${3:acc}, ${4:item}) => {
+  return $3
+}, ${2:initial})
+endsnippet
+
+snippet map "map function" b
+${1:what}.map(${2:item} => {
+  return $2
+})
+endsnippet

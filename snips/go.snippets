@@ -1,0 +1,53 @@
+snippet ctxdep "golang.org/x/net/context" b
+"golang.org/x/net/context"
+endsnippet
+
+#
+# Tests
+# -----
+#
+snippet setup "test setup" b
+var _ = Describe("${1:test}", func() {
+	It("${2:case}", func() {
+		$0
+	})
+})
+endsnippet
+
+snippet desc "test describe" b
+Describe("${1:test}", func() {
+	It("${2:case}", func() {
+		$0
+	})
+})
+endsnippet
+
+snippet it "test it" b
+It("${1:case}", func() {
+	$0
+})
+endsnippet
+
+snippet justbefore "just before each" b
+JustBeforeEach(func() {
+	$0
+})
+endsnippet
+
+snippet before "before each" b
+BeforeEach(func() {
+	$0
+})
+endsnippet
+
+snippet expeq "expect equal" b
+Expect(${1:what}).${2:To}(${3:Equal}(${4:other}))
+endsnippet
+
+snippet expsu "expect to succeed" b
+Expect(${1:what}).${2:To}(${4:Succeed}())
+endsnippet
+
+snippet expno "expect not have occurred" b
+Expect(${1:err}).${2:ToNot}(${4:HaveOccurred}())
+endsnippet
