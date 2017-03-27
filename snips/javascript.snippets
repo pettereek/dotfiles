@@ -75,6 +75,14 @@ toggle${1:Thing}() {
 },
 endsnippet
 
+snippet connect "react connect component" b
+connect(
+	${1:null},
+	${2:null}
+)(${0:${VISUAL:React.createClass(\{
+\})}})
+endsnippet
+
 #
 # Imports
 # -------
@@ -83,12 +91,12 @@ snippet imp "import abc from 'abc'" b
 import $1 from '$2'
 endsnippet
 
-snippet impca "import { abc } from '@syb/capsule'" b
-import { $1 } from '@syb/capsule'
+snippet impca "import {x} from '@syb/capsule'" b
+import {$1} from '@syb/capsule'
 endsnippet
 
-snippet impui "import { abc } from '@syb/ui'" b
-import { $1 } from '@syb/ui'
+snippet impui "import {x} from '@syb/ui'" b
+import {$1} from '@syb/ui'
 endsnippet
 
 #
