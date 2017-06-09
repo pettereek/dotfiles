@@ -43,6 +43,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'flowtype/vim-flow'
+Plugin 'posva/vim-vue'
 
 " Colors
 Plugin 'flazz/vim-colorschemes'
@@ -96,7 +97,7 @@ if (has("termguicolors"))
 endif
 
 set background=dark
-colorscheme gruvbox
+colorscheme molokai
 
 "
 " File type handling
@@ -156,13 +157,13 @@ command! Vs vs
 
 " <esc> shortcuts
 inoremap jk <esc>
+inoremap jK <esc>
+inoremap Jk <esc>
+inoremap JK <esc>
 inoremap jj <esc>
-
-" Tab navigation with ctrl-tab, ctrl-shift-tab
-nnoremap <C-S-tab> :tabprevious<CR>
-nnoremap <C-tab>   :tabnext<CR>
-inoremap <C-S-tab> <Esc>:tabprevious<CR>i
-inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap jJ <esc>
+inoremap Jj <esc>
+inoremap JJ <esc>
 
 "
 " Ag + CtrlP
