@@ -83,6 +83,12 @@ connect(
 \})}})
 endsnippet
 
+snippet ismounted "react is mounted check" b
+if (this.isMounted()) {
+	${0:${VISUAL}}
+}
+endsnippet
+
 #
 # Imports
 # -------
@@ -99,6 +105,14 @@ snippet impui "import {x} from '@syb/ui'" b
 import {$1} from '@syb/ui'
 endsnippet
 
+snippet impr "import React from 'react'" b
+import React from 'react'$0
+endsnippet
+
+snippet impim "import im from 'immutable'" b
+import im from 'immutable'$0
+endsnippet
+
 #
 # General
 # -------
@@ -113,4 +127,12 @@ snippet map "map function" b
 ${1:list}.map(${2:item} => {
 	return $2
 })
+endsnippet
+
+snippet imget "immutable get" w
+get('${1:${VISUAL}}')$0
+endsnippet
+
+snippet imgetin "immutable getIn" w
+getIn(['`!p snip.rv = snip.v.text.replace(".", "', '")`'])$0
 endsnippet
