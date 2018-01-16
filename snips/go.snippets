@@ -2,6 +2,12 @@ snippet ctxdep "golang.org/x/net/context" b
 "golang.org/x/net/context"
 endsnippet
 
+snippet handler "http handler func" b
+func (${1:h} ${2:Handler}) ${3:Func}(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
+	${0:return nil}
+}
+endsnippet
+
 #
 # Tests
 # -----
@@ -50,4 +56,8 @@ endsnippet
 
 snippet expno "expect not have occurred" b
 Expect(${1:err}).${2:ToNot}(${4:HaveOccurred}())
+endsnippet
+
+snippet expsur "expect to succeed"
+Expect(${1:${VISUAL}}).To(Succeed())
 endsnippet
