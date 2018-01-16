@@ -3,4 +3,4 @@
 " -----
 "
 set macligatures
-set guifont=Share\ Tech\ Mono:h14
+set guifont=Roboto\ Mono:h13

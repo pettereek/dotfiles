@@ -49,6 +49,7 @@ Plugin 'posva/vim-vue'
 " Colors
 Plugin 'flazz/vim-colorschemes'
 Plugin 'herrbischoff/cobalt2.vim'
+Plugin 'arcticicestudio/nord-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -90,15 +91,21 @@ set splitbelow
 set splitright
 
 "
-" Colors
-" ------
+" Colors & Theme settings
+" -----------------------
 "
 if (has("termguicolors"))
   set termguicolors " enable 'True color'
 endif
 
 set background=dark
-colorscheme molokai
+colorscheme nord
+
+" Nord specifics
+"let g:nord_italic = 1               " Enable italic style
+"let g:nord_italic_comments = 1      " Italic comments
+let g:nord_uniform_status_lines = 1
+
 
 "
 " File type handling
