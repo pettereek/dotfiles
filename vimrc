@@ -33,7 +33,8 @@ Plugin 'fatih/vim-go'
 Plugin 'evidens/vim-twig'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'vim-scripts/applescript.vim'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'dearrrfish/vim-applescript'
 
 " Git
 Plugin 'tpope/vim-fugitive'
