@@ -23,6 +23,40 @@ dispatch => Utils.BindDispatchActions(dispatch, {
 endsnippet
 
 #
+# Testing
+# -------
+#
+snippet testdesc "describe(..., () => {})" b
+describe('$1', () => {
+	$2
+})$0
+endsnippet
+
+snippet testit "it(..., () => {})" b
+it('$1', () => {
+	$2
+})$0
+endsnippet
+
+snippet sheq "should.eql" b
+should.eql($1)$0
+endsnippet
+
+#
+# JSX
+# ---
+#
+snippet strong "<strong>" w
+<strong>${1:${VISUAL}}</strong>$0
+endsnippet
+
+snippet ul "<ul>...</ul>" w
+<ul>
+	<li>${1:${VISUAL}}</li>
+</ul>$0
+endsnippet
+
+#
 # React
 # -----
 #
@@ -129,10 +163,38 @@ ${1:list}.map(${2:item} => {
 })
 endsnippet
 
+snippet fff "() => {}" w
+($1) => {$0}
+endsnippet
+
 snippet imget "immutable get" w
 get('${1:${VISUAL}}')$0
 endsnippet
 
 snippet imgetin "immutable getIn" w
 getIn(['`!p snip.rv = snip.v.text.replace(".", "', '")`'])$0
+endsnippet
+
+#
+# Browser
+# -------
+#
+snippet cdebug "console.debug" b
+console.debug($0)
+endsnippet
+
+snippet clog "console.log" b
+console.log($0)
+endsnippet
+
+snippet cinfo "console.info" b
+console.info($0)
+endsnippet
+
+snippet cwarn "console.warn" b
+console.warn($0)
+endsnippet
+
+snippet cerror "console.error" b
+console.error($0)
 endsnippet
