@@ -33,7 +33,6 @@ Plugin 'fatih/vim-go'
 Plugin 'evidens/vim-twig'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'slashmili/alchemist.vim'
 Plugin 'dearrrfish/vim-applescript'
 
 " Git
@@ -102,8 +101,8 @@ set background=dark
 colorscheme nord
 
 " Nord specifics
-"let g:nord_italic = 1               " Enable italic style
-"let g:nord_italic_comments = 1      " Italic comments
+let g:nord_italic = 1               " Enable italic style
+let g:nord_italic_comments = 1      " Italic comments
 let g:nord_uniform_status_lines = 1
 
 
