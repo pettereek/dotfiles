@@ -47,7 +47,6 @@ Plugin 'posva/vim-vue'
 
 " Colors
 Plugin 'flazz/vim-colorschemes'
-Plugin 'herrbischoff/cobalt2.vim'
 Plugin 'arcticicestudio/nord-vim'
 
 " All of your Plugins must be added before the following line
