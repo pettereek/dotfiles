@@ -31,7 +31,7 @@ local abort = function(reason)
   log.w(reason .. ', aborting...')
 end
 
-hs.hotkey.bind(hyper, 'H', function()
+hs.hotkey.bind(hyper, 'Q', function()
   local tmpFile = os.getenv('HOME')..'/.highlight.tmp'
 
   local hl = 'highlight'
