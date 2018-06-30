@@ -6,12 +6,12 @@
 	br = branch
 	co = checkout
 	diffs = diff --cached
-  logg = log --graph --format=format:'%C(dim white)%h%C(reset) %s %C(cyan)%an %C(reset)%C(dim white)%ar%d%C(reset)%+b'
+	logg = log --graph --format=format:'%C(dim white)%h%C(reset) %s %C(cyan)%an %C(reset)%C(dim white)%ar%d%C(reset)%+b'
 [push]
 	default = simple
 [core]
-  editor = vim
-[url "git@github.com:"]
-  insteadOf = https://github.com/
+	editor = vim
 [pull]
 	rebase = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
