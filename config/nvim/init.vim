@@ -51,6 +51,12 @@ set tabstop=2    " Tab is 2 columns
 set shiftwidth=2 " << | >> shifts 2 columns
 set expandtab    " Expand tab to spaces
 
+" Buffer search
+set hlsearch   " Highlight seach results
+set ignorecase " Ignore case of searches
+set smartcase  " Search with case if upper case is used
+set incsearch  " Highlight dynamically as pattern is typed
+
 "
 " Colors & Theme settings
 " -----------------------
