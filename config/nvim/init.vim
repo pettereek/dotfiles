@@ -5,7 +5,14 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'neomake/neomake'
+
+" Search
 Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'Numkil/ag.vim'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -13,9 +20,12 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " Language support
 Plug 'fatih/vim-go'
-
-" Syntax
-Plug 'neomake/neomake'
+Plug 'elixir-editors/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+" JS, TS
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -45,6 +55,7 @@ set directory=~/.vim/swapfiles " Swap file directory
 set list lcs=trail:·,tab:»·    " Whitespace highlighting
 set list
 set mouse=a                    " Clicking, scrolling, selecting etc.
+set updatetime=250             " Be snappy
 
 " Tab
 set tabstop=2    " Tab is 2 columns
@@ -104,7 +115,9 @@ map <leader>ff :NERDTreeFind<CR>
 " Neomake
 " -------
 "
-call neomake#configure#automake('rw', 1000) " When reading a buffer (after 1s), and when writing (no delay).
+" When reading a buffer (after 1s), and when writing (no delay).
+" https://github.com/neomake/neomake#setup
+call neomake#configure#automake('rw', 1000)
 let g:neomake_error_sign = { 'text': 'E-', 'texthl': 'ErrorMsg' }
 let g:neomake_warning_sign = { 'text': 'W-', 'texthl': 'NeomakeWarningSign' }
 
@@ -113,15 +126,25 @@ let g:neomake_warning_sign = { 'text': 'W-', 'texthl': 'NeomakeWarningSign' }
 " ------
 "
 let g:go_fmt_command = "goimports"
-
+imap ierr <esc>:GoIfErr<CR><S-o>
+map ierr :GoIfErr<CR>
 
 "
-" Ag + CtrlP
+" Copy/Paste
 " ----------
 "
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+"
+" Search
+" ------
+"
 if executable('ag')
-	set grepprg=ag\ --nogroup\ --nocolor\ --skip-vcs-ignores
-	let g:ag_prg = 'ag --nogroup --column --smart-case --skip-vcs-ignores --ignore-dir node_modules'
+  set grepprg=ag\ --nogroup\ --nocolor\ --skip-vcs-ignores
+  let g:ag_prg = 'ag --vimgrep --smart-case --skip-vcs-ignores --ignore-dir node_modules'
 
   " Use Ag search for CtrlP
   let g:ctrlp_user_command = '
@@ -130,7 +153,6 @@ if executable('ag')
         \ ""
         \ --skip-vcs-ignores
         \ --ignore-dir node_modules
-        \ --ignore-dir Godeps
         \ --ignore-dir vendor
         \ --ignore-dir deps
         \ --ignore-dir _deploy
@@ -138,18 +160,11 @@ if executable('ag')
         \ '
 
   " Ag is fast enough to skip cache
-	let g:ctrlp_use_caching = 0
+  let g:ctrlp_use_caching = 0
 endif
 
-" nmap <leader>a :Agext <C-r>=expand('%:e')<CR>
-" nmap <leader>A :Ag <C-r><CR>
-" command! -nargs=+ Agext call AgExt(<q-args>)
-
-" Limit Ag command search to a specific file type
-" function! AgExt(...) "{{{
-" 	let words = split(a:1)
-" 	let ext = words[0]
-" 	let rest = join(words[1:-1], ' ')
-" 	echo "normal :Ag -G '\.(".ext.")$' ".rest."<CR>"
-" 	exe "Ag -G '\.(".ext.")$' ".rest
-" endfunction "}}}
+command -nargs=+ -complete=file -bar Search silent! grep! <args>|cwindow|redraw!
+nnoremap <leader>s :Search<SPACE>
+nnoremap <leader>S :Search<SPACE>-G'\.<C-r>=expand('%:e')<CR>$'<SPACE>
+nnoremap <leader>ds :Search<SPACE><C-r>=expand('%:p:h')<CR><SPACE>
+nnoremap <leader>ws :Search<SPACE><C-R><C-W><CR>
