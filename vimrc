@@ -46,6 +46,7 @@ set encoding=utf-8             " Use UTF-8
 set number                     " Enable line numbers
 set ruler                      " Show the cursor position
 set hidden                     " Better handling of multiple buffers
+set cursorline
 set directory=~/.vim/swapfiles " Swap file directory
 set list lcs=trail:·,tab:»·    " Whitespace highlighting
 set list
