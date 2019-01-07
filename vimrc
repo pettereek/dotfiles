@@ -68,6 +68,15 @@ set splitbelow
 set splitright
 
 "
+" Copy/Paste
+" ----------
+"
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+"
 " Colors & Theme settings
 " -----------------------
 "
