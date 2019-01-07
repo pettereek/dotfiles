@@ -123,12 +123,6 @@ let g:syntastic_css_checkers = ['mixedindentlint']
 let g:syntastic_scss_checkers = ['mixedindentlint']
 
 "
-" Jsx
-" ---
-"
-let g:jsx_ext_required = 0 " allow .js files (instead of just jsx)
-
-"
 " ViM go
 " ------
 "
