@@ -1,58 +1,35 @@
+" Automatically install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 "
 " .vimrc
 " ------
 "
 set nocompatible " be iMproved, required
-filetype off     " required
 
-"
-" Vundle
-" ------
-" See: https://github.com/VundleVim/Vundle.vim
-"
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'vim-syntastic/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'rking/ag.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
-Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
-
-Plugin 'L9'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'rking/ag.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+" git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " Language support
-Plugin 'keith/swift.vim'
-Plugin 'fatih/vim-go'
-Plugin 'evidens/vim-twig'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'dearrrfish/vim-applescript'
-
-" Git
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-
-" Javascript
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'flowtype/vim-flow'
-Plugin 'posva/vim-vue'
+Plug 'fatih/vim-go'
 
 " Colors
-Plugin 'flazz/vim-colorschemes'
-Plugin 'arcticicestudio/nord-vim'
+Plug 'arcticicestudio/nord-vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" Put your non-Plugin stuff after this line
+call plug#end()
 
 "
 " Leader
@@ -104,7 +81,6 @@ colorscheme nord
 let g:nord_italic = 1               " Enable italic style
 let g:nord_italic_comments = 1      " Italic comments
 let g:nord_uniform_status_lines = 1
-
 
 "
 " File type handling
