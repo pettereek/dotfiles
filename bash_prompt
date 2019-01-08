@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # based om https://github.com/necolas/dotfiles/blob/master/shell/bash_prompt
-
 prompt_git() {
     local s=""
     local branchName=""
@@ -13,7 +12,7 @@ prompt_git() {
         if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == "false" ]; then
 
             # ensure index is up to date
-            git update-index --really-refresh  -q &>/dev/null
+            git update-index --really-refresh -q &>/dev/null
 
             # check for uncommitted changes in the index
             if ! $(git diff --quiet --ignore-submodules --cached); then
