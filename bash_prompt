@@ -130,7 +130,7 @@ set_prompts() {
 
     # set the terminal title to the current working directory
     PS1="${userStyle}\u"; # username
-    PS1+="\[$reset\]:";
+    PS1+="\[$white\]:";
     PS1+="\$(prompt_working_dir \"$green\" \"$purple\")" # working directory
     PS1+="\$(prompt_git \" $reset\")" # git repository details
     PS1+="\$(prompt_kube \" $reset$yellow\")" # k8s details
