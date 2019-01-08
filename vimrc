@@ -25,6 +25,7 @@ Plug 'tpope/vim-fugitive'
 
 " Language support
 Plug 'fatih/vim-go'
+Plug 'elixir-editors/vim-elixir'
 
 " Colors
 Plug 'arcticicestudio/nord-vim'
