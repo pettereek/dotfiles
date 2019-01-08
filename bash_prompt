@@ -62,6 +62,27 @@ prompt_kube()
     printf "%s" "$1$kubectl_prompt"
 }
 
+# prompt_working_dir displays the path relative to the git repo, or the current path
+prompt_working_dir()
+{
+  local d=$PWD
+  local c=$1
+
+  if [ $(git rev-parse --is-inside-work-tree &>/dev/null; printf "%s" $?) == 0 ]; then
+    local toplvl=$(git rev-parse --show-toplevel)
+    local toplvl=$(basename $toplvl)
+    local path=$(git rev-parse --show-prefix)
+
+    # prefix path with "/" when non-empty
+    [ -n "$path" ] && path="/$path"
+
+    d="$toplvl$path"
+    c=$2
+  fi
+
+  printf "%s" "$c$d"
+}
+
 set_prompts() {
     local black=""
     local blue=""
@@ -109,10 +130,8 @@ set_prompts() {
 
     # set the terminal title to the current working directory
     PS1="${userStyle}\u"; # username
-    PS1+="@";
-    PS1+="${hostStyle}\h"; # host
-    PS1+="\[${white}\]:";
-    PS1+="\[$blue\]\w" # working directory
+    PS1+="\[$reset\]:";
+    PS1+="\$(prompt_working_dir \"$green\" \"$purple\")" # working directory
     PS1+="\$(prompt_git \" $reset\")" # git repository details
     PS1+="\$(prompt_kube \" $reset$yellow\")" # k8s details
     PS1+="\n"
