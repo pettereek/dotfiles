@@ -64,7 +64,7 @@ prompt_kube()
 # prompt_working_dir displays the path relative to the git repo, or the current path
 prompt_working_dir()
 {
-  local d=$PWD
+  local d=$(dirs +0)
   local c=$1
 
   if [ $(git rev-parse --is-inside-work-tree &>/dev/null; printf "%s" $?) == 0 ]; then
