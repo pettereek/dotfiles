@@ -133,6 +133,9 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
+imap ierr <esc>:GoIfErr<CR><S-o>
+map ierr :GoIfErr<CR>
+
 "
 " Keyboard
 " --------
