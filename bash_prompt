@@ -73,7 +73,8 @@ prompt_working_dir()
     local path=$(git rev-parse --show-prefix)
 
     # prefix path with "/" when non-empty
-    [ -n "$path" ] && path="/$path"
+    [[ -n "${path}" ]] && path="/${path}"
+    [[ "${path}" == */ ]] && path="${path: : -1}"
 
     d="$toplvl$path"
     c=$2
