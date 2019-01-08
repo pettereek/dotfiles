@@ -130,6 +130,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# setup jump "j"
 eval "$(jump shell bash)"
 
 # golang
@@ -139,9 +140,7 @@ export PATH="$PATH:$GOPATH/bin"
 test_aliases="$GOPATH/src/github.com/soundtrackyourbrand/syb-core/scripts/test_aliases.sh"
 if [ -f "$test_aliases" ]; then . "$test_aliases"; fi
 
-export EDITOR=vim
-
-alias kc=kubectl
-
 #SYBCTL_GCLOUD_ALIAS#
 source ~/.sybctl_gcloud_alias
+
+export EDITOR=vim
