@@ -1,0 +1,47 @@
+#!/bin/bash
+
+TYSON_HOME="$HOME/Development/Soundtrack/syb-custom/tyson"
+
+function tyson()
+{
+  printcmd() {
+    echo -e "→ $1"
+    eval $1
+    if [[ $? > 0 ]]; then
+      echo -e "⚠ $1 failed"
+      return 1
+    fi
+  }
+
+  printdone() {
+    echo -e "✔ $1 done"
+  }
+
+  case "$1" in
+    "cd")
+      printcmd "cd $TYSON_HOME"
+      ;;
+    "update")
+      tyson cd
+      printcmd "git pull --rebase" && \
+        printcmd "cmake -DCMAKE_BUILD_TYPE=Debug -GNinja ." && \
+        printcmd "ninja" && \
+        printdone $1
+      ;;
+    "start")
+      tyson cd
+      printcmd "./player-cli/player-cli --syb_file=cfg/petter-stage.json --enable-webserver --log=tyson" && \
+        printdone $1
+      ;;
+    "cache-clean")
+      tyson cd
+      printcmd "rm -rf cache" && \
+        printdone $1
+      ;;
+    *)
+      if [[ ! -z $1 ]]; then
+        echo "$0: '$1' is not a command."
+      fi
+      echo "Usage: $0 cd|update|start|cache-clean"
+  esac
+}
