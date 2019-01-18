@@ -13,6 +13,7 @@ set nocompatible " be iMproved, required
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
