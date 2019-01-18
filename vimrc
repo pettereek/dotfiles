@@ -27,6 +27,7 @@ Plug 'tpope/vim-fugitive'
 " Language support
 Plug 'fatih/vim-go'
 Plug 'elixir-editors/vim-elixir'
+Plug 'pangloss/vim-javascript'
 
 " Colors
 Plug 'arcticicestudio/nord-vim'
@@ -135,6 +136,12 @@ let g:go_highlight_structs = 1
 
 imap ierr <esc>:GoIfErr<CR><S-o>
 map ierr :GoIfErr<CR>
+
+"
+" Javascript
+" ----------
+"
+let g:javascript_plugin_jsdoc = 1
 
 "
 " Keyboard
