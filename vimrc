@@ -125,14 +125,12 @@ let g:syntastic_css_checkers = ['mixedindentlint']
 let g:syntastic_scss_checkers = ['mixedindentlint']
 
 "
-" ViM go
+" Golang
 " ------
 "
 let g:go_fmt_command = "goimports"
-let g:go_fmt_autosave = 1
 let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
 
 imap ierr <esc>:GoIfErr<CR><S-o>
 map ierr :GoIfErr<CR>
