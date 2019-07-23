@@ -19,6 +19,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Chiel92/vim-autoformat'
 
 " git
 Plug 'airblade/vim-gitgutter'
@@ -28,9 +29,17 @@ Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'jparise/vim-graphql'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript'] }
 
 " Colors
 Plug 'arcticicestudio/nord-vim'
+Plug 'sainnhe/vim-color-forest-night'
+Plug 'KKPMW/sacredforest-vim'
+Plug 'rhysd/vim-color-spring-night'
 
 call plug#end()
 
@@ -87,13 +96,16 @@ if (has("termguicolors"))
   set termguicolors " enable 'True color'
 endif
 
-set background=dark
-colorscheme nord
-
 " Nord specifics
 let g:nord_italic = 1               " Enable italic style
 let g:nord_italic_comments = 1      " Italic comments
 let g:nord_uniform_status_lines = 1
+
+let g:spring_night_cterm_italic = 0
+
+set background=dark
+colorscheme forest-night
+
 
 "
 " File type handling
@@ -101,6 +113,9 @@ let g:nord_uniform_status_lines = 1
 "
 autocmd BufNewFile,BufRead *.hbs set filetype=html
 autocmd BufNewFile,BufRead *.scss set filetype=scss
+
+autocmd BufWrite *.ex :Autoformat
+autocmd BufWrite *.exs :Autoformat
 
 "
 " NerdTREE
@@ -119,10 +134,8 @@ map <leader>ff :NERDTreeFind<CR>
 "
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_javascript_checkers = ['mixedindentlint', 'eslint']
-let g:syntastic_go_checkers = ['go', 'govet', 'errcheck']
-let g:syntastic_css_checkers = ['mixedindentlint']
-let g:syntastic_scss_checkers = ['mixedindentlint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_go_checkers = ['go', 'errcheck']
 
 "
 " Golang
@@ -131,6 +144,9 @@ let g:syntastic_scss_checkers = ['mixedindentlint']
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_fields = 1
 
 imap ierr <esc>:GoIfErr<CR><S-o>
 map ierr :GoIfErr<CR>
@@ -167,7 +183,7 @@ inoremap JJ <esc>
 "
 if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor\ --skip-vcs-ignores
-	let g:ag_prg = 'ag --nogroup --column --smart-case --skip-vcs-ignores --ignore-dir node_modules'
+	let g:ag_prg = 'ag --nogroup --column --smart-case --skip-vcs-ignores --ignore-dir node_modules --igore-dir vendor'
 
   " Use Ag search for CtrlP
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""
