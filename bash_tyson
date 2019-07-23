@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 TYSON_HOME="$HOME/Development/Soundtrack/syb-custom/tyson"
 
@@ -42,6 +42,12 @@ function tyson()
       if [[ ! -z $1 ]]; then
         echo "$0: '$1' is not a command."
       fi
-      echo "Usage: $0 cd|update|start|cache-clean"
+      echo "Usage: tyson <command>"
+      echo ""
+      echo "Possible commands are:"
+      echo "  cd          Change directory to the tyson directory"
+      echo "  update      Pull the latest changes and build tyson"
+      echo "  start       Start tyson"
+      echo "  cache-clean Clean the tyson cache folder"
   esac
 }
