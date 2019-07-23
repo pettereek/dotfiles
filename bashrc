@@ -139,7 +139,10 @@ eval "$(jump shell bash)"
 
 # golang
 export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
+export GOROOT="/usr/local/go"
+export GOBIN="$GOPATH/bin"
+export PATH="$PATH:$GOBIN"
+export PATH="$PATH:/usr/local/go/bin"
 
 test_aliases="$GOPATH/src/github.com/soundtrackyourbrand/syb-core/scripts/test_aliases.sh"
 if [ -f "$test_aliases" ]; then . "$test_aliases"; fi
