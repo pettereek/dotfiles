@@ -153,3 +153,5 @@ source ~/.sybctl_gcloud_alias
 export EDITOR=vim
 
 PROMPT_COMMAND='echo -ne "\033]0;${USER}:${PWD}\007"'
+
+export CFLAGS="-I /usr/local/include"
