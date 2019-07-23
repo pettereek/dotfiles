@@ -1,0 +1,6 @@
+/* Transform the icon size of pulseaudio */
+#pulseaudio-button * {
+  -gtk-icon-transform: scale(.8);
+}
+/* Setting paddig works for power manager */
+#xfce4-power-manager-plugin { padding: 3px; }
