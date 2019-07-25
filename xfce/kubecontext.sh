@@ -8,10 +8,8 @@
 # For more information see:
 # https://goodies.xfce.org/projects/panel-plugins/xfce4-genmon-plugin
 
-# Colorize the text if we are in a production cluster.
+DEFAULT_COLOR=""
 PRODUCTION_COLOR="#a9dd9d"
-
-# Font for the panel text label.
 PANEL_FONT="Monospace Bold 9"
 
 api_version=$(cat $HOME/.kube/config | grep -Po 'apiVersion: \K.*')
@@ -21,7 +19,10 @@ region=$(echo $current_context | cut -d '_' -f 3)
 project=$(echo $current_context | cut -d '_' -f 2)
 
 fgcolor=""
-if [[ "$project" == *production* ]]; then
+if [[ ! -z "$DEFAULT_COLOR" ]]; then
+  fgcolor="fgcolor='$DEFAULT_COLOR'"
+fi
+if [[ "$project" == *production* && ! -z "$PRODUCTION_COLOR" ]]; then
   fgcolor="fgcolor='$PRODUCTION_COLOR'"
 fi
 
