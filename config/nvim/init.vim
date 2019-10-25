@@ -105,6 +105,9 @@ inoremap JJ <esc>
 map <leader>fs :NERDTreeToggle<CR>
 map <leader>ff :NERDTreeFind<CR>
 
+" Show hidden files. Toggle with <shift>+i.
+let NERDTreeShowHidden=1
+
 "
 " Neomake
 " -------
