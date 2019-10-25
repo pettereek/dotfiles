@@ -157,3 +157,4 @@ PROMPT_COMMAND='echo -ne "\033]0;${USER}:${PWD}\007"'
 export CFLAGS="-O2 -g -I /usr/local/include"
 
 export PATH="~/.local/bin:$PATH"
+export PATH="~/bin:$PATH"
