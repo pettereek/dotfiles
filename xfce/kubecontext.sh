@@ -9,7 +9,7 @@
 # https://goodies.xfce.org/projects/panel-plugins/xfce4-genmon-plugin
 
 DEFAULT_COLOR=""
-PRODUCTION_COLOR="#a9dd9d"
+PRODUCTION_COLOR="#FF6A6F"
 PANEL_FONT="Monospace Bold 9"
 
 api_version=$(cat $HOME/.kube/config | grep -Po 'apiVersion: \K.*')
