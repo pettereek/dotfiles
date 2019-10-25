@@ -18,7 +18,6 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Language support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'elixir-editors/vim-elixir'
-"Plug 'slashmili/alchemist.vim'
 
 " JS, TS
 Plug 'pangloss/vim-javascript'
