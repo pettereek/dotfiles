@@ -158,3 +158,8 @@ export CFLAGS="-O2 -g -I /usr/local/include"
 
 export PATH="~/.local/bin:$PATH"
 export PATH="~/bin:$PATH"
+
+#
+# rust
+#
+export PATH="~/.cargo/bin:$PATH"
