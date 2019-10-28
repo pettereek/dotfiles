@@ -44,8 +44,4 @@ Configured in `~/.config/terminator/config`.
 # Terminator configuration
 ```
 
-## Editing
-
-Edit the color definitions in `colors.data` and run `go run colors.go` to update this file and the related svg images.
-
 **This file is generated. Do not edit.**

@@ -57,7 +57,7 @@ func ParseColors(filename string) ([]Color, error) {
 }
 
 func WriteSVGs(colors []Color) error {
-	t, err := template.ParseFiles("colors.tpl.svg")
+	t, err := template.ParseFiles("color.tpl.svg")
 	if err != nil {
 		return err
 	}
