@@ -26,6 +26,26 @@ Configured in `~/.config/kitty/kitty.conf`.
 
 ```
 # Kitty configuration
+
+foreground #fffeeb
+background #3c4c55
+
+color0 #132132
+color8 #8d9eb2
+color1 #ff6a6f
+color9 #fd8489
+color2 #a9dd9d
+color10 #c9eac3
+color3 #f0eaaa
+color11 #f4f0c2
+color4 #7098e6
+color12 #98b8e6
+color5 #9e88c7
+color13 #bd9ed7
+color6 #84cedb
+color14 #aadde6
+color7 #e5e9f0
+color15 #eceff4
 ```
 
 ### Terminator

@@ -20,6 +20,14 @@ Configured in `~/.config/kitty/kitty.conf`.
 
 ```
 # Kitty configuration
+
+foreground {{ .Foreground.Hex }}
+background {{ .Background.Hex }}
+
+{{ range $color := .Colors -}}
+color{{ .Normal.ID }} {{ .Normal.Hex }}
+color{{ .Bright.ID }} {{ .Bright.Hex }}
+{{ end -}}
 ```
 
 ### Terminator
