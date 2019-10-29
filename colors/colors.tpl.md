@@ -4,10 +4,12 @@
 
 ## Colors
 
-| Name | Kind | Hex |   |
-| ---- | ---- | --- | - |
+| Name | Normal | Bright |   |   |
+| ---- | ------ | ------ | - | - |
+| foreground | `{{ .Foreground.Hex }}` | | ![{{.Foreground.Name}}-{{.Foreground.Kind}}]({{.Foreground.Filename}}) |
+| background | `{{ .Background.Hex }}` | | ![{{.Background.Name}}-{{.Background.Kind}}]({{.Background.Filename}}) |
 {{ range $color := .Colors -}}
-| {{ .Name }} | {{ .Kind }} | `{{ .Hex }}` | ![{{.Name}}-{{.Kind}}]({{.Filename}}) |
+| {{ .Name }} | `{{ .Normal.Hex }}` | `{{ .Bright.Hex }}` | ![{{.Normal.Name}}-{{.Normal.Kind}}]({{.Normal.Filename}}) ![{{.Bright.Name}}-{{.Bright.Kind}}]({{.Bright.Filename}}) |
 {{ end }}
 
 ## Terminal configuration

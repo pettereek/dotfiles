@@ -2,10 +2,10 @@ package main
 
 import (
 	"bufio"
-	"errors"
 	"flag"
 	"fmt"
 	"os"
+	"sort"
 	"strings"
 	"text/template"
 )
@@ -18,10 +18,12 @@ func main() {
 
 	fmt.Printf("Reading %s\n", filename)
 
-	colors, err := ParseColors(filename)
+	colors, err := ParseTerminalColors(filename)
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Println(colors)
 
 	if err := WriteSVGs(colors); err != nil {
 		panic(err)
@@ -32,10 +34,10 @@ func main() {
 	}
 }
 
-func ParseColors(filename string) ([]Color, error) {
+func ParseTerminalColors(filename string) (TerminalColors, error) {
 	f, err := os.Open(filename)
 	if err != nil {
-		return nil, err
+		return TerminalColors{}, err
 	}
 
 	defer f.Close()
@@ -43,51 +45,111 @@ func ParseColors(filename string) ([]Color, error) {
 	scanner := bufio.NewScanner(f)
 	scanner.Split(bufio.ScanLines)
 
-	var colors []Color
+	var colors []ColorVariant
 
 	for scanner.Scan() {
 		c, err := ParseColor(scanner.Text())
 		if err != nil {
-			return nil, err
+			return TerminalColors{}, err
 		}
 		colors = append(colors, c)
 	}
 
-	return colors, nil
+	return GroupColors(colors), nil
 }
 
-func WriteSVGs(colors []Color) error {
+func GroupColors(vars []ColorVariant) TerminalColors {
+	grouped := map[string][]ColorVariant{}
+	for _, v := range vars {
+		vv := grouped[v.Name]
+		vv = append(vv, v)
+		grouped[v.Name] = vv
+	}
+	termColors := TerminalColors{}
+	colors := Colors{}
+	for k, vars := range grouped {
+		color := Color{Name: k}
+		for _, v := range vars {
+			switch v.Kind {
+			case "normal":
+				color.Normal = v
+			case "bright":
+				color.Bright = v
+			}
+		}
+
+		fmt.Println(k)
+		switch k {
+		case "foreground":
+			termColors.Forground = color.Normal
+		case "background":
+			termColors.Background = color.Normal
+		default:
+			colors = append(colors, color)
+		}
+	}
+
+	termColors.Colors = colors.Sort()
+
+	return termColors
+}
+
+func WriteSVGs(termColors TerminalColors) error {
+	if err := WriteSVG(termColors.Forground); err != nil {
+		return err
+	}
+	if err := WriteSVG(termColors.Background); err != nil {
+		return err
+	}
+
+	for i := range termColors.Colors {
+		if err := WriteSVG(termColors.Colors[i].Normal); err != nil {
+			return err
+		}
+		if err := WriteSVG(termColors.Colors[i].Bright); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func WriteSVG(colorVariant ColorVariant) error {
+	if !colorVariant.Valid() {
+		return nil
+	}
+
 	t, err := template.ParseFiles("color.tpl.svg")
 	if err != nil {
 		return err
 	}
 
-	for i := range colors {
-		c := colors[i]
-		svg, err := os.Create(c.Filename)
-		if err != nil {
-			return err
-		}
-		if err := t.Execute(svg, c); err != nil {
-			return err
-		}
-		fmt.Printf("Wrote %s\n", c.Filename)
+	svg, err := os.Create(colorVariant.Filename)
+	if err != nil {
+		return err
 	}
+	if err := t.Execute(svg, colorVariant); err != nil {
+		return err
+	}
+	fmt.Printf("Wrote %s\n", colorVariant.Filename)
 
 	return nil
 }
 
-func GenerateREADME(colors []Color) error {
+func GenerateREADME(termColors TerminalColors) error {
 	t, err := template.ParseFiles("./colors.tpl.md")
 	if err != nil {
 		return err
 	}
 
 	data := struct {
+		Foreground ColorVariant
+		Background ColorVariant
 		Colors     []Color
 		EditNotice string
 	}{
-		Colors:     colors,
+		Foreground: termColors.Forground,
+		Background: termColors.Background,
+		Colors:     termColors.Colors,
 		EditNotice: "This file is generated. Do not edit.",
 	}
 
@@ -103,41 +165,66 @@ func GenerateREADME(colors []Color) error {
 	return nil
 }
 
+type TerminalColors struct {
+	Forground  ColorVariant
+	Background ColorVariant
+
+	Colors []Color
+}
+
+type Colors []Color
+
+func (cs Colors) Sort() Colors {
+	cp := make(Colors, len(cs))
+	copy(cp, cs)
+
+	sort.Slice(cp, func(i, j int) bool {
+		return cp[i].Normal.ID < cp[j].Normal.ID
+	})
+
+	return cp
+}
+
 type Color struct {
-	ID       string
+	Name   string
+	Normal ColorVariant
+	Bright ColorVariant
+}
+
+type ColorVariant struct {
 	Name     string
+	ID       string
 	Filename string
 	Kind     string
 	Hex      string
 }
 
-func ParseColor(s string) (Color, error) {
+func (cv ColorVariant) Valid() bool {
+	return cv.Name != ""
+}
+
+func ParseColor(s string) (ColorVariant, error) {
 	ss := strings.Split(s, " ")
-	var compact []string
+	var values []string
 	for i := range ss {
 		if ss[i] == "" {
 			continue
 		}
-		compact = append(compact, ss[i])
+		values = append(values, ss[i])
 	}
 
 	var id, name, kind, hex string
-	switch len(compact) {
+
+	switch len(values) {
 	case 3:
-		id = compact[0]
-		name = compact[1]
-		kind = "normal"
-		hex = compact[2]
+		id, name, kind, hex = values[0], values[1], "normal", values[2]
 	case 4:
-		id = compact[0]
-		name = compact[1]
-		kind = compact[2]
-		hex = compact[3]
+		id, name, kind, hex = values[0], values[1], values[2], values[3]
 	default:
-		return Color{}, errors.New("invalid color")
+		return ColorVariant{}, fmt.Errorf("invalid color format: %s", s)
 	}
 
-	return Color{
+	return ColorVariant{
 		ID:       id,
 		Name:     name,
 		Filename: fmt.Sprintf("svg/%s.%s.svg", name, kind),

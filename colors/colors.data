@@ -1,18 +1,18 @@
-fg foreground       #fffeeb
-bg background       #3c4c55
-0  black            #132132
-8  black      light #8d9eb2
-1  red              #ff6a6f
-9  red        light #fd8489
-2  green            #a9dd9d
-10 green      light #c9eac3
-3  yellow           #f0eaaa
-11 yellow     light #f4f0c2
-4  blue             #7098e6
-12 blue       light #98b8e6
-5  magenta          #9e88c7
-13 magenta    light #bd9ed7
-6  cyan             #84cedb
-14 cyan       light #aadde6
-7  white            #e5e9f0
-15 white      light #eceff4
+fg foreground        #fffeeb
+bg background        #3c4c55
+0  black             #132132
+8  black      bright #8d9eb2
+1  red               #ff6a6f
+9  red        bright #fd8489
+2  green             #a9dd9d
+10 green      bright #c9eac3
+3  yellow            #f0eaaa
+11 yellow     bright #f4f0c2
+4  blue              #7098e6
+12 blue       bright #98b8e6
+5  magenta           #9e88c7
+13 magenta    bright #bd9ed7
+6  cyan              #84cedb
+14 cyan       bright #aadde6
+7  white             #e5e9f0
+15 white      bright #eceff4
