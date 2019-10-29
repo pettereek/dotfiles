@@ -38,7 +38,11 @@ color{{ .Bright.ID }} {{ .Bright.Hex }}
 Configured in `~/.config/terminator/config`.
 
 ```
-# Terminator configuration
+[profiles]
+  [[default]]
+    background_color = "{{ .Foreground.Hex }}"
+    foreground_color = "{{ .Background.Hex }}"
+    palette = "{{ JoinTerminator .Colors }}"
 ```
 
 **{{.EditNotice}}**

@@ -77,7 +77,11 @@ color15 #eceff4
 Configured in `~/.config/terminator/config`.
 
 ```
-# Terminator configuration
+[profiles]
+  [[default]]
+    background_color = "#fffeeb"
+    foreground_color = "#3c4c55"
+    palette = "#132132:#ff6a6f:#a9dd9d:#f0eaaa:#7098e6:#9e88c7:#84cedb:#e5e9f0:#8d9eb2:#fd8489:#c9eac3:#f4f0c2:#98b8e6:#bd9ed7:#aadde6:#eceff4"
 ```
 
 **This file is generated. Do not edit.**

@@ -133,7 +133,13 @@ func WriteSVG(colorVariant ColorVariant) error {
 }
 
 func GenerateREADME(termColors TerminalColors) error {
-	t, err := template.ParseFiles("./colors.tpl.md")
+	t, err := template.
+		New("colors.tpl.md").
+		Funcs(template.FuncMap{
+			"JoinTerminator": JoinTerminator,
+		}).
+		ParseFiles("./colors.tpl.md")
+
 	if err != nil {
 		return err
 	}
@@ -180,6 +186,17 @@ func (cs Colors) Sort() Colors {
 	})
 
 	return cp
+}
+
+func JoinTerminator(cs []Color) string {
+	s := []string{}
+	for i := range cs {
+		s = append(s, cs[i].Normal.Hex)
+	}
+	for i := range cs {
+		s = append(s, cs[i].Bright.Hex)
+	}
+	return strings.Join(s, ":")
 }
 
 type Color struct {
