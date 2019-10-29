@@ -30,20 +30,44 @@ background #3c4c55
 
 color0 #132132
 color8 #8d9eb2
+
+#: black
+
 color1 #ff6a6f
 color9 #fd8489
+
+#: red
+
 color2 #a9dd9d
 color10 #c9eac3
+
+#: green
+
 color3 #f0eaaa
 color11 #f4f0c2
+
+#: yellow
+
 color4 #7098e6
 color12 #98b8e6
+
+#: blue
+
 color5 #9e88c7
 color13 #bd9ed7
+
+#: magenta
+
 color6 #84cedb
 color14 #aadde6
+
+#: cyan
+
 color7 #e5e9f0
 color15 #eceff4
+
+#: white
+
 ```
 
 ### Terminator

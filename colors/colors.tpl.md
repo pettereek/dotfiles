@@ -25,6 +25,9 @@ background {{ .Background.Hex }}
 {{ range $color := .Colors -}}
 color{{ .Normal.ID }} {{ .Normal.Hex }}
 color{{ .Bright.ID }} {{ .Bright.Hex }}
+
+#: {{ .Name }}
+
 {{ end -}}
 ```
 
