@@ -76,7 +76,6 @@ func GroupColors(vars []ColorVariant) TerminalColors {
 			}
 		}
 
-		fmt.Println(k)
 		switch k {
 		case "foreground":
 			termColors.Forground = color.Normal

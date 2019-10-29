@@ -25,8 +25,6 @@
 Configured in `~/.config/kitty/kitty.conf`.
 
 ```
-# Kitty configuration
-
 foreground #fffeeb
 background #3c4c55
 

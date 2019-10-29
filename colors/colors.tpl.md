@@ -19,8 +19,6 @@
 Configured in `~/.config/kitty/kitty.conf`.
 
 ```
-# Kitty configuration
-
 foreground {{ .Foreground.Hex }}
 background {{ .Background.Hex }}
 
