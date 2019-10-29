@@ -23,8 +23,6 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println(colors)
-
 	if err := WriteSVGs(colors); err != nil {
 		panic(err)
 	}

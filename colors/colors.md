@@ -4,8 +4,8 @@
 
 ## Colors
 
-| Name | Normal | Bright |   |   |
-| ---- | ------ | ------ | - | - |
+| Name | Normal | Bright |   |
+| ---- | ------ | ------ | - |
 | foreground | `#fffeeb` | | ![foreground-normal](svg/foreground.normal.svg) |
 | background | `#3c4c55` | | ![background-normal](svg/background.normal.svg) |
 | black | `#132132` | `#8d9eb2` | ![black-normal](svg/black.normal.svg) ![black-bright](svg/black.bright.svg) |

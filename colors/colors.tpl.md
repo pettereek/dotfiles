@@ -4,8 +4,8 @@
 
 ## Colors
 
-| Name | Normal | Bright |   |   |
-| ---- | ------ | ------ | - | - |
+| Name | Normal | Bright |   |
+| ---- | ------ | ------ | - |
 | foreground | `{{ .Foreground.Hex }}` | | ![{{.Foreground.Name}}-{{.Foreground.Kind}}]({{.Foreground.Filename}}) |
 | background | `{{ .Background.Hex }}` | | ![{{.Background.Name}}-{{.Background.Kind}}]({{.Background.Filename}}) |
 {{ range $color := .Colors -}}
