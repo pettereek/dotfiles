@@ -22,6 +22,8 @@ Configured in `~/.config/kitty/kitty.conf`.
 foreground {{ .Foreground.Hex }}
 background {{ .Background.Hex }}
 
+#: The foreground and background colors
+
 {{ range $color := .Colors -}}
 color{{ .Normal.ID }} {{ .Normal.Hex }}
 color{{ .Bright.ID }} {{ .Bright.Hex }}

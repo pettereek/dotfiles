@@ -28,6 +28,8 @@ Configured in `~/.config/kitty/kitty.conf`.
 foreground #fffeeb
 background #3c4c55
 
+#: The foreground and background colors
+
 color0 #132132
 color8 #8d9eb2
 
